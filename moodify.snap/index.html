@@ -7,16 +7,29 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>moodify.snap</title>
+    <title>moodify</title>
 </head>
 <body>
 
     <div class="container text-center">
 
+        <!-- header and api key inputs -->
         <div id="container text-center">
-            <h1>moodify.snap</h1>
-         
-            <p id="info">
+
+            <h1>moodify</h1>
+
+            <form id="api-keys">
+                <input type="text" id="emotion-api-key-input" placeholder="Emotion Detection API-KEY">
+
+                <input type="text" id="spotify-id-input" placeholder="Spotify Id">
+                
+                <input type="text" id="spotify-secret-input" placeholder="Spotify Secret">
+                <br>
+
+                <input class="capture btn btn-dark mt-3" id="save-keys" type="enter" value="enter">                
+            </form>
+
+            <!-- <p id="info">
                 how to use:<br>
                 pose for the camera to capture your mood or upload a picture of yourself<br>
                 try be as expressive as possible<br>
@@ -24,29 +37,32 @@
                 moodify will determine your mood <br>
                 if you press confirm moodify will generate a spotify playlist based on your mood<br>
                 if you aren't really feeling like the mood chosen fits just press try again                
-            </p>
+            </p> -->
     
         <!-- display for the video capture / captured image / chosen mood / playlist -->
         <div id="main-wrapper" class="mt-2">
-            <video class="col-10 mx-auto" id="player" controls=autoplay></video>
+            <video id="player" controls autoplay></video>
         </div>
 
         <!-- display for button controls -->
         <div id="btn-wrapper">
             <input class="capture btn btn-dark mx-auto" value="capture" id="capture">
         </div>
-        <h1>or</h1>
+
+        <!-- alternate option to upload an image of face -->
+
+        <!-- <h1>or</h1>
         <input class="btn btn-dark text-center" type="file" name="pic" accepts="images/*" id="image-input">
-        <input class="upload btn btn-dark text-center" id="upload" value="upload">
+        <input class="upload btn btn-dark text-center" id="upload" value="upload"> -->
         <!-- canvas that will be appended to main-wrapper once captured -->
-        <canvas class="col-10" id="canvas"></canvas>
+
+        <canvas id="canvas" width=320 height=240></canvas>
+
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="config.js"></script>
-    <script src="upload.js"></script>
-    <script src="api.js"></script>
-    <script src="snap.js"> </script>
+    <script src="getmood.js"></script>
     
 </body>
 </html>
