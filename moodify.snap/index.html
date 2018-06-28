@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>moodify.snap</title>
+</head>
+<body>
+
+    <div class="container text-center">
+
+        <div id="container text-center">
+            <h1>moodify.snap</h1>
+         
+            <p id="info">
+                how to use:<br>
+                pose for the camera to capture your mood or upload a picture of yourself<br>
+                try be as expressive as possible<br>
+                when you press the capture button<br>
+                moodify will determine your mood <br>
+                if you press confirm moodify will generate a spotify playlist based on your mood<br>
+                if you aren't really feeling like the mood chosen fits just press try again                
+            </p>
+    
+        <!-- display for the video capture / captured image / chosen mood / playlist -->
+        <div id="main-wrapper" class="mt-2">
+            <video class="col-10 mx-auto" id="player" controls=autoplay></video>
+        </div>
+
+        <!-- display for button controls -->
+        <div id="btn-wrapper">
+            <input class="capture btn btn-dark mx-auto" value="capture" id="capture">
+        </div>
+        <h1>or</h1>
+        <input class="btn btn-dark text-center" type="file" name="pic" accepts="images/*" id="image-input">
+        <input class="upload btn btn-dark text-center" id="upload" value="upload">
+        <!-- canvas that will be appended to main-wrapper once captured -->
+        <canvas class="col-10" id="canvas"></canvas>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="config.js"></script>
+    <script src="upload.js"></script>
+    <script src="api.js"></script>
+    <script src="snap.js"> </script>
+    
+</body>
+</html>

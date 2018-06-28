@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>test</title>
+</head>
+<body>
+
+    <div class="container text-center">
+    
+        <!-- display for the video capture / captured image / chosen mood / playlist -->
+        <div id="main-wrapper" class="mb-3 mx-auto">
+      
+        </div>
+
+        <div id="color-picker" class="mb-3 mx-auto">
+                <h1>Choose a color that matches your mood:</h1>
+                <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#ff0000">
+        </div>
+
+        <!-- display for button controls -->
+        <div id="btn-wrapper">
+            <button onclick="takescreenshot()" class="btn btn-dark mx-auto" value="capture" id="capture">capture</button>
+        </div>
+
+        <!-- img shown hereonce captured -->
+        <div id="snapshot" lass="mt-3"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="config.js"></script>
+    <script src="upload.js"></script>
+    <script src="api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+
+    <script>
+
+        Webcam.set({
+            width: 600,
+            height: 400,
+            image_format: 'jpeg',
+            jpeg_quality: 50
+        });
+        Webcam.attach('#main-wrapper');
+
+        var data_url;
+
+        function takescreenshot() {
+            Webcam.snap(function(data_uri) {            
+            console.log(data_uri)
+            .catch(function(err) { 
+                 console.log(err.name + ": " + err.message); 
+        }); // always check for errors at the end.
+        });
+    }
+
+    </script>
+    
+</body>
+</html>
