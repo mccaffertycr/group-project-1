@@ -132,8 +132,8 @@
         // replace player with canvas image / mood and prompt user to confirm
         if (imageData !== null) {
         $('#snapshot-wrapper').append($('<h2 id="confirm-label">Are you happy with your Snapshot?</h2>'),
-                                      $('<input class="confirm btn btn-dark mx-auto" value="confirm" id="confirm">'),
-                                      $('<input class="confirm btn btn-dark mx-auto" value="try-again" id="try-again">'));
+                                      $('<button class="confirm btn btn-dark mr-2" id="confirm">confirm</button>'),
+                                      $('<button class="confirm btn btn-dark mx-auto" id="try-again">try again</button>'));
         }
         $('#btn-wrapper').empty();
     });
@@ -156,4 +156,5 @@
             });
                           
         $('#btn-wrapper').append('<input class="capture btn btn-dark mx-auto" value="capture" id="capture">');
+
     });
