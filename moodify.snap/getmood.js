@@ -10,25 +10,6 @@
     var imageData = null;
     var mood = '';
 
-
-    $(document).on('click', '#capture', () => {
-        context.drawImage(player, 0, 0, canvas.width, canvas.height);
-
-        imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
-
-        // Stop all video streams.
-        player.srcObject.getVideoTracks().forEach(track => track.stop());
-
-        // replace player with canvas image / mood and prompt user to confirm
-        if (imageData !== null) {
-        $('#main-wrapper').append($('<h2>Are you happy with your Snapshot?</h2>'),
-                                  $('#canvas'));
-        $('#btn-wrapper').empty()
-                         .append($('<input class="confirm btn btn-dark mx-auto" value="confirm" id="confirm">'))
-                         .append($('<input class="confirm btn btn-dark mx-auto" value="try-again" id="try-again">'));
-        }
-    });
-
     navigator.mediaDevices.getUserMedia(constraints)
         .then((stream) => {
             // Attach the video stream to the video element and autoplay.
@@ -140,14 +121,33 @@
 
     // event listeners
 
+    $(document).on('click', '#capture', () => {
+        context.drawImage(player, 0, 0, canvas.width, canvas.height);
+
+        imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
+
+        // Stop all video streams.
+        player.srcObject.getVideoTracks().forEach(track => track.stop());
+
+        // replace player with canvas image / mood and prompt user to confirm
+        if (imageData !== null) {
+        $('#snapshot-wrapper').append($('<h2 id="confirm-label">Are you happy with your Snapshot?</h2>'),
+                                      $('<input class="confirm btn btn-dark mx-auto" value="confirm" id="confirm">'),
+                                      $('<input class="confirm btn btn-dark mx-auto" value="try-again" id="try-again">'));
+        }
+        $('#btn-wrapper').empty();
+    });
+
     $(document).on('click', '#confirm', function(){
         processImage();
     });
 
     $(document).on('click', '#try-again', function(){
-        $('#main-wrapper').empty()
-                          .append($('<video id="player" controls autoplay></video>'),
-                                  $('<canvas id="canvas" width=320 height=240></canvas>'));
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            $('#confirm-label').remove();
+            $('#confirm').remove();
+            $('#try-again').remove();
         
             navigator.mediaDevices.getUserMedia(constraints)
             .then((stream) => {
@@ -155,6 +155,5 @@
             player.srcObject = stream;
             });
                           
-        $('#btn-wrapper').empty()
-                         .append('<input class="capture btn btn-dark mx-auto" value="capture" id="capture">');
+        $('#btn-wrapper').append('<input class="capture btn btn-dark mx-auto" value="capture" id="capture">');
     });
