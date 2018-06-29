@@ -71,39 +71,38 @@
         .done(function(data) {
             console.log(data)
             var result = data[0].faceAttributes.emotion;
-            console.log(Math.round(result.neutral))
 
             if (Math.round(result.neutral) === 1) {
                 mood = 'chill';
                 console.log(mood);
-                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                $('#main-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.anger) === 1) {
                 mood = 'rage';
-                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                $('#main-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.contempt) === 1) {
                 mood = 'revenge';
-                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                $('#main-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.digust) === 1) {
                 mood = 'disgusted';
-                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                $('#main-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.happiness) === 1) {
                 mood = 'happy';
-                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                $('#main-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.sadness) === 1) {
                 mood = 'sad';
-                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                $('#main-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.surprise) === 1) {
-                mood = 'awestruck';
-                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                mood = 'awe';
+                $('#main-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             }
-            
+
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             // Display error message.
