@@ -46,17 +46,12 @@ function playlistMatch(userMood) {
      }).done(function(response){
          console.log(response);
 
-        //  response.playlists.items.forEach(function(ele))
-         for(var i=0;i<20;i++){
-        
-        console.log(response.playlists.items[1].uri);
-      
+         var rndm = Math.floor(Math.random()*5);    
+
          $("#playlist-wrapper").append("<iframe src='https://open.spotify.com/embed?uri=" 
-                                   + response.playlists.items[i].uri 
+                                   + response.playlists.items[rndm].uri 
                                    + "'width='300' height='380' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>");
-        }
         
-        // displaySongs(); 
      }).fail(function() {
          console.log('NOOO');
      });
