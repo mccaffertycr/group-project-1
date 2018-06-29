@@ -24,20 +24,9 @@
         $('#main-wrapper').append($('<h2>Are you happy with your Snapshot?</h2>'),
                                   $('#canvas'));
         $('#btn-wrapper').empty()
-                         .append($('<input class="confirm btn btn-dark mx-auto" onclick="processImage()" value="confirm" id="confirm">'))
+                         .append($('<input class="confirm btn btn-dark mx-auto" value="confirm" id="confirm">'))
                          .append($('<input class="confirm btn btn-dark mx-auto" value="try-again" id="try-again">'));
         }
-    });
-
-    $(document).on('click', '#confirm', function(){
-        processImage();
-
-    });
-
-    $(document).on('click', '#try-again', function(){
-        $('#canvas').html('');
-        $('#btn-wrapper').empty()
-                         .append('<input class="capture btn btn-dark mx-auto" value="capture" id="capture">');
     });
 
     navigator.mediaDevices.getUserMedia(constraints)
@@ -82,26 +71,40 @@
         .done(function(data) {
             console.log(data)
             var result = data[0].faceAttributes.emotion;
+            console.log(Math.round(result.neutral))
 
-            if (result.anger > result.contempt && result.disgust && result.fear && result.happiness && result.neutral && result.sadness && result.surprise) {
-                mood = 'angry';
-            } else if (result.contempt > result.anger && result.disgust && result.fear && result.happiness && result.neutral && result.sadness && result.surprise) {
-                mood = 'vengeful';
-            } else if (result.disgust > result.anger && result.contempt && result.fear && result.happiness && result.neutral && result.sadness && result.surprise) {
+            if (Math.round(result.neutral) === 1) {
+                mood = 'chill';
+                console.log(mood);
+                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                playlistMatch(mood);
+            } else if (Math.round(result.anger) === 1) {
+                mood = 'rage';
+                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                playlistMatch(mood);
+            } else if (Math.round(result.contempt) === 1) {
+                mood = 'revenge';
+                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                playlistMatch(mood);
+            } else if (Math.round(result.digust) === 1) {
                 mood = 'disgusted';
-            } else if (result.fear > result.anger && result.disgust && result.disgust && result.happiness && result.neutral && result.sadness && result.surprise) {
-                mood = 'scared';
-            } else if (result.happiness > result.anger && result.disgust && result.fear && result.contempt && result.neutral && result.sadness && result.surprise) {
+                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                playlistMatch(mood);
+            } else if (Math.round(result.happiness) === 1) {
                 mood = 'happy';
-            } else if (result.neutral > result.anger && result.disgust && result.fear && result.contempt && result.happiness && result.sadness && result.surprise) {
-                mood = 'neutral';
-            } else if (result.sadness > result.anger && result.disgust && result.fear && result.contempt && result.happiness && result.neutral && result.surprise) {
+                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                playlistMatch(mood);
+            } else if (Math.round(result.sadness) === 1) {
                 mood = 'sad';
-            } else if (result.surprise > result.anger && result.disgust && result.fear && result.contempt && result.happiness && result.neutral && result.sadness) {
+                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                playlistMatch(mood);
+            } else if (Math.round(result.surprise) === 1) {
                 mood = 'awestruck';
+                $('#main-wrapper').append($('<h2>Your Mood:' + mood + '</h2>'));
+                playlistMatch(mood);
             }
+            
         })
-
         .fail(function(jqXHR, textStatus, errorThrown) {
             // Display error message.
             var errorString = (errorThrown === "") ?
@@ -135,3 +138,24 @@
 
         return new Blob([uInt8Array], { type: contentType });
     }
+
+    // event listeners
+
+    $(document).on('click', '#confirm', function(){
+        processImage();
+    });
+
+    $(document).on('click', '#try-again', function(){
+        $('#main-wrapper').empty()
+                          .append($('<video id="player" controls autoplay></video>'),
+                                  $('<canvas id="canvas" width=320 height=240></canvas>'));
+        
+            navigator.mediaDevices.getUserMedia(constraints)
+            .then((stream) => {
+            // Attach the video stream to the video element and autoplay.
+            player.srcObject = stream;
+            });
+                          
+        $('#btn-wrapper').empty()
+                         .append('<input class="capture btn btn-dark mx-auto" value="capture" id="capture">');
+    });

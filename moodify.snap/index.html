@@ -51,18 +51,25 @@
 
         <!-- alternate option to upload an image of face -->
 
-        <!-- <h1>or</h1>
+        <h1>or</h1>
         <input class="btn btn-dark text-center" type="file" name="pic" accepts="images/*" id="image-input">
-        <input class="upload btn btn-dark text-center" id="upload" value="upload"> -->
+        <input class="upload btn btn-dark text-center" id="upload" value="upload">
+
         <!-- canvas that will be appended to main-wrapper once captured -->
 
         <canvas id="canvas" width=320 height=240></canvas>
+
+        <div id="playlist-wrapper">
+
+        </div>
 
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="config.js"></script>
     <script src="getmood.js"></script>
-    
+    <script src="upload.js"></script>
+    <script src="getplaylist.js"></script>
+        
 </body>
 </html>
