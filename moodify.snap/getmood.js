@@ -128,6 +128,7 @@
 
         // Stop all video streams.
         player.srcObject.getVideoTracks().forEach(track => track.stop());
+        $('#player').hide();
 
         // replace player with canvas image / mood and prompt user to confirm
         if (imageData !== null) {
@@ -151,13 +152,13 @@
             $('#confirm-label').remove();
             $('#confirm').remove();
             $('#try-again').remove();
+            $('#player').show();               
+            $('#btn-wrapper').append('<input class="capture btn btn-dark mx-auto" value="capture" id="capture">');
         
             navigator.mediaDevices.getUserMedia(constraints)
             .then((stream) => {
             // Attach the video stream to the video element and autoplay.
             player.srcObject = stream;
             });
-                          
-        $('#btn-wrapper').append('<input class="capture btn btn-dark mx-auto" value="capture" id="capture">');
 
     });
