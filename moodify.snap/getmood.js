@@ -119,9 +119,13 @@
         return new Blob([uInt8Array], { type: contentType });
     }
 
+    // hide empty canvass when page loads
+    $('#canvas').hide();
+
     // event listeners
 
     $(document).on('click', '#capture', () => {
+        $('#canvas').show();
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
 
         imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
