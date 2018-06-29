@@ -144,6 +144,7 @@
         $('#confirm-label').remove();
         $('#confirm').remove();
         $('#try-again').remove();
+        $('#canvas').hide();
     });
 
     $(document).on('click', '#try-again', function(){
