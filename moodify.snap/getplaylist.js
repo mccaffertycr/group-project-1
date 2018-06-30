@@ -1,10 +1,10 @@
-function playlistMatch(userMood) {
+function playlistMatch() {
      console.log("ready!");
-     var limit = 5;
-     var q = userMood;
+     var limit = 1;
+     var q = mood;
      //offsets randomly by 100 to hopefully give different results.
      //however I think for the finished we should append to new array then randomize that for real different feeling results
-     var offset = Math.floor(Math.random() * 100);
+     var offset = Math.floor(Math.random() * 10);
      var queryPlaylist = "https://api.spotify.com/v1/search?q="+ q +"&type=playlist&market=US&limit="+limit+"&offset="+offset;
      //var for storing the access_token
      var atoken = "";
@@ -34,11 +34,11 @@ function playlistMatch(userMood) {
         console.log('something failed'); 
      });
  
-     }
-    
-     startApp();
+    }
+
+startApp();
  
- function playlistSearch() {
+function playlistSearch() {
      $.ajax({
          url: queryPlaylist,
          method: "GET",
@@ -46,11 +46,9 @@ function playlistMatch(userMood) {
      }).done(function(response){
          console.log(response);
 
-         var rndm = Math.floor(Math.random()*5);    
-
          $("#playlist-wrapper").append("<iframe src='https://open.spotify.com/embed?uri=" 
-                                   + response.playlists.items[rndm].uri 
-                                   + "'width='300' height='380' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>");
+                                        + response.playlists.items[0].uri 
+                                        + "'width='300' height='380' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>");
         
      }).fail(function() {
          console.log('NOOO');
