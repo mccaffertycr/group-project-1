@@ -12,8 +12,14 @@ $('#save-keys').on('click', function() {
 })
 
 // hide main container when page loads
-// $('#main').hide();
+$('#main').hide();
 
 $('#get-started').on('click', function() {
+  navigator.mediaDevices.getUserMedia(constraints)
+        .then((stream) => {
+            // Attach the video stream to the video element and autoplay.
+            player.srcObject = stream;
+        });
 
+  $('#main').show();
 })

@@ -10,12 +10,6 @@
     var imageData = null;
     var mood = '';
 
-    navigator.mediaDevices.getUserMedia(constraints)
-        .then((stream) => {
-            // Attach the video stream to the video element and autoplay.
-            player.srcObject = stream;
-        });
-
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
         // var subscriptionKey = "";
@@ -50,12 +44,11 @@
         })        
 
         .done(function(data) {
-            console.log(data)
+            console.log(data);
             var result = data[0].faceAttributes.emotion;
 
             if (Math.round(result.neutral) === 1) {
                 mood = 'chill';
-                console.log(mood);
                 $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.anger) === 1) {
@@ -79,7 +72,7 @@
                 $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.surprise) === 1) {
-                mood = 'awe';
+                mood = 'shock';
                 $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             }
@@ -119,7 +112,7 @@
         return new Blob([uInt8Array], { type: contentType });
     }
 
-    // hide empty canvass when page loads
+    // hide empty canvas when page loads
     $('#canvas').hide();
 
     // event listeners
@@ -132,7 +125,6 @@
 
         // Stop all video streams.
         player.srcObject.getVideoTracks().forEach(track => track.stop());
-        $('#player').hide();
 
         // replace player with canvas image / mood and prompt user to confirm
         if (imageData !== null) {
@@ -140,10 +132,12 @@
                                       $('<button class="confirm btn btn-dark mr-2" id="confirm">confirm</button>'),
                                       $('<button class="confirm btn btn-dark mx-auto" id="try-again">try again</button>'));
         }
-        $('#btn-wrapper').empty();
+
+        $('#main-wrapper').hide();
     });
 
-    $(document).on('click', '#confirm', function(){
+    $(document).on('click', '#confirm', function() {
+
         processImage();
         $('#confirm-label').remove();
         $('#confirm').remove();
@@ -157,8 +151,7 @@
             $('#confirm-label').remove();
             $('#confirm').remove();
             $('#try-again').remove();
-            $('#player').show();               
-            $('#btn-wrapper').append('<input class="capture btn btn-dark mx-auto" value="capture" id="capture">');
+            $('#main-wrapper').show();               
         
             navigator.mediaDevices.getUserMedia(constraints)
             .then((stream) => {
