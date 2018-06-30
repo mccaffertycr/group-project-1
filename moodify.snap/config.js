@@ -15,11 +15,23 @@ $('#save-keys').on('click', function() {
 $('#main').hide();
 
 $('#get-started').on('click', function() {
+
+  // hide the canvas
+  $('#canvas').hide();
+  // remove current mood 
+  $('#mood-label').remove();
+  // empty any existing playlists
+  $('#playlist-wrapper').empty();
+  // display the main container and main-wrapper 
+  $('#main').show();
+  $('#main-wrapper').show();
+  // adjust text on header button
+  $('#get-started').text('get started'); 
+
+  // start webcam
   navigator.mediaDevices.getUserMedia(constraints)
         .then((stream) => {
             // Attach the video stream to the video element and autoplay.
             player.srcObject = stream;
         });
-
-  $('#main').show();
 })

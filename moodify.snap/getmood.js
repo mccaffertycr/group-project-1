@@ -49,31 +49,31 @@
 
             if (Math.round(result.neutral) === 1) {
                 mood = 'chill';
-                $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.anger) === 1) {
                 mood = 'rage';
-                $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.contempt) === 1) {
                 mood = 'revenge';
-                $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.digust) === 1) {
                 mood = 'disgusted';
-                $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.happiness) === 1) {
                 mood = 'happy';
-                $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.sadness) === 1) {
                 mood = 'sad';
-                $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             } else if (Math.round(result.surprise) === 1) {
                 mood = 'shock';
-                $('#snapshot-wrapper').append($('<h2>Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
             }
 
@@ -112,9 +112,6 @@
         return new Blob([uInt8Array], { type: contentType });
     }
 
-    // hide empty canvas when page loads
-    $('#canvas').hide();
-
     // event listeners
 
     $(document).on('click', '#capture', () => {
@@ -132,7 +129,6 @@
                                       $('<button class="confirm btn btn-dark mr-2" id="confirm">confirm</button>'),
                                       $('<button class="confirm btn btn-dark mx-auto" id="try-again">try again</button>'));
         }
-
         $('#main-wrapper').hide();
     });
 
@@ -143,6 +139,7 @@
         $('#confirm').remove();
         $('#try-again').remove();
         $('#canvas').hide();
+        $('#get-started').text('not feeling it?');
     });
 
     $(document).on('click', '#try-again', function(){
