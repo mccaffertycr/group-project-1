@@ -50,7 +50,7 @@
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
                 $('#info').css('background-color', 'peachpuff').css('color', 'white');
-            } else if (Math.round(result.digust) === 1) {
+            } else if (Math.round(result.disgust) === 1) {
                 mood = 'bored';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
@@ -118,7 +118,7 @@
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
         imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
         $('#canvas').show();
-        
+
         // Stop all video streams.
         player.srcObject.getVideoTracks().forEach(track => track.stop());
         
