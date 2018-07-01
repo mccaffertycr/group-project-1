@@ -25,6 +25,8 @@
      }); // always check for errors at the end.
 };
 
+
+
 $(document).on('click', '.capture', function() {
 
     //empty the canvas var and create a new canvas with jquery

@@ -1,15 +1,3 @@
-    // const player = document.getElementById('player');
-    // const canvas = document.getElementById('canvas');
-    // const context = canvas.getContext('2d');
-    // const captureButton = document.getElementById('capture');
-    
-    // const constraints = {
-    //     video: true,
-    // };
-
-    // var imageData = null;
-    // var mood = '';
-
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
         // var subscriptionKey = "";
@@ -49,37 +37,37 @@
 
             if (Math.round(result.neutral) === 1) {
                 mood = 'chill';
-                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '" id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
-                $('#info').css('background-color', 'lightgray').css('color', 'white');
+                $('#info').css('background-color', 'palegreen').css('color', 'white');
             } else if (Math.round(result.anger) === 1) {
                 mood = 'rage';
-                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '" id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
                 $('#info').css('background-color', 'darkred').css('color', 'white');
             } else if (Math.round(result.contempt) === 1) {
                 mood = 'revenge';
-                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '" id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
                 $('#info').css('background-color', 'peachpuff').css('color', 'white');
             } else if (Math.round(result.digust) === 1) {
-                mood = 'disgusted';
-                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '" id="mood-label">Your Mood: ' + mood + '</h2>'));
+                mood = 'bored';
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
                 $('#info').css('background-color', 'plum').css('color', 'white');
             } else if (Math.round(result.happiness) === 1) {
                 mood = 'happy';
-                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '"  id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
                 $('#info').css('background-color', 'lightgoldenrodyellow').css('color', 'white');
             } else if (Math.round(result.sadness) === 1) {
                 mood = 'sad';
-                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '"  id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
                 $('#info').css('background-color', 'darkslateblue').css('color', 'white');
             } else if (Math.round(result.surprise) === 1) {
                 mood = 'shock';
-                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '"  id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch(mood);
                 $('#info').css('background-color', 'lightskyblue').css('color', 'white');
             }
@@ -128,36 +116,10 @@
     // 
     // 
 
-    // $('#get-started').on('click', function() {
-    //     // hide this button
-    //     $(this).hide();
-    //     // hide the canvas
-    //      $('#canvas').hide();
-    //     // remove current mood 
-    //     $('#mood-label').remove();
-    //     // empty any existing playlists
-    //     $('#playlist-wrapper').empty();
-    //     // display the main container and main-wrapper 
-    //     $('#main').show();
-    //     $('#main-wrapper').show();
-    //     // adjust text on header button
-    //     $('#get-started').text('get started'); 
-    //     // change info color to default
-    //     $('#info').css('background-color', 'white').css('color', 'black');
-
-    //     // start webcam
-    //     navigator.mediaDevices.getUserMedia(constraints)
-    //             .then((stream) => {
-    //                 // Attach the video stream to the video element and autoplay.
-    //                 player.srcObject = stream;
-    //             });
-    //     })
 
     $(document).on('click', '#capture', function () {
         $('#canvas').show();
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
-
-        imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
 
         // Stop all video streams.
         player.srcObject.getVideoTracks().forEach(track => track.stop());
@@ -173,10 +135,13 @@
 
     $(document).on('click', '#confirm', function() {
 
+        imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
+        
         processImage();
         $('#confirm-label').remove();
         $('#confirm').remove();
         $('#try-again').remove();
+        $('#placeholder').remove();
         $('#canvas').hide();
         $('#get-started').show();
         $('#get-started').text('not feeling it?');
@@ -185,10 +150,12 @@
     $(document).on('click', '#try-again', function(){
 
             context.clearRect(0, 0, canvas.width, canvas.height);
+            $('#placeholder').remove();
             $('#confirm-label').remove();
             $('#confirm').remove();
             $('#try-again').remove();
-            $('#main-wrapper').show();               
+            $('#main-wrapper').show(); 
+            $('#upload-wrapper').show();              
         
             navigator.mediaDevices.getUserMedia(constraints)
             .then((stream) => {

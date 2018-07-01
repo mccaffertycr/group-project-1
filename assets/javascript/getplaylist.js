@@ -36,7 +36,7 @@ function playlistMatch() {
  
     }
 
-startApp();
+    startApp();
  
 function playlistSearch() {
      $.ajax({
