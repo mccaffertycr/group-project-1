@@ -107,9 +107,6 @@
         return new Blob([uInt8Array], { type: contentType });
     }
 
-    // hide main container when page loads
-    $('#main').hide();
-
     // 
     // 
     // event listeners
@@ -164,4 +161,3 @@
             });
 
     });
-
