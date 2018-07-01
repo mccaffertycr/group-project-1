@@ -20,6 +20,10 @@ body {
     background: lightgray;
 }
 
+#logo {
+    padding-top: 22%;
+}
+
 .chill {
     color: palegreen;
 }

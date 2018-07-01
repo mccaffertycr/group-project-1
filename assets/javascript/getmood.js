@@ -114,26 +114,25 @@
     // 
 
 
-    $(document).on('click', '#capture', function () {
-        $('#canvas').show();
+    $(document).on('click', '#capture', function () {        
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
-
+        imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
+        $('#canvas').show();
+        
         // Stop all video streams.
         player.srcObject.getVideoTracks().forEach(track => track.stop());
-
+        
         // replace player with canvas image / mood and prompt user to confirm
         if (imageData !== null) {
         $('#snapshot-wrapper').append($('<h2 id="confirm-label">Is this picture okay?</h2>'),
                                       $('<button class="confirm btn btn-dark mr-2" id="confirm">confirm</button>'),
                                       $('<button class="confirm btn btn-dark mx-auto" id="try-again">try again</button>'));
         }
+        $('#upload-wrapper').hide();
         $('#main-wrapper').hide();
     });
 
-    $(document).on('click', '#confirm', function() {
-
-        imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
-        
+    $(document).on('click', '#confirm', function() {   
         processImage();
         $('#confirm-label').remove();
         $('#confirm').remove();
