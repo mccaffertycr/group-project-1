@@ -10,8 +10,6 @@ function readURL(input) {
         var img = new Image();
         console.log(input.files);
         reader.onload = function (e) {
-
-            // var img = new Image();
             img.src =  e.target.result;
             img.width = '640px';
             img.height = '480px';

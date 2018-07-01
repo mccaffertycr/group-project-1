@@ -1,6 +1,6 @@
     //
     //
-    // declare global vars
+    // global vars
     //
     //
 
@@ -12,19 +12,20 @@
     var imageData = null;
     var mood = '';
     var firstvisit = true;
+    var atoken = ""; 
 
 $(document).on('click', '#get-started', function(){
 
-    // hide button
+    // hide get started button
     $(this).hide();
     
-    // divide the screen
+    // divide the screen with css grid
     if (($('#info').css('grid-column-end'))) {
          $('#info').css('grid-column-end', '2');
     } else {
          $('#info').css('grid-row-end', '2');
     }
-
+    // if first time to the page create and append the main div html
     if (firstvisit) { 
       var maindiv = 
       $('<div id="main" class="container-fluid text-center">' +
@@ -67,23 +68,22 @@ $(document).on('click', '#get-started', function(){
     $('body').append(maindiv);
     }
 
-        // hide the canvas
-        $('#canvas').hide();
-        // remove current mood 
-        $('#mood-label').remove();
-        // empty any existing playlists
-        $('#playlist-wrapper').empty();
-        // display the main container and main-wrapper 
-        $('#main').show();
-        $('#main-wrapper').show();
-        $('#upload-wrapper').show();
-        // adjust text on header button
-        $('#get-started').text('get started'); 
-        // change info color to default
-        $('#info').css('background-color', 'white').css('color', 'black');
-        // first visit var
-        firstvisit = false;
-
+    // hide the canvas
+    $('#canvas').hide();
+    // remove current mood 
+    $('#mood-label').remove();
+    // empty any existing playlists
+    $('#playlist-wrapper').empty();
+    // display the main container and main-wrapper 
+    $('#main').show();
+    $('#main-wrapper').show();
+    $('#upload-wrapper').show();
+    // adjust text on header button
+    $('#get-started').text('get started'); 
+    // change info color to default
+    $('#info').css('background-color', 'white').css('color', 'black');
+    
+    // set webcam / canvas variables
     player = document.getElementById('player');
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
@@ -93,11 +93,14 @@ $(document).on('click', '#get-started', function(){
     };
 
     // start webcam
-    navigator.mediaDevices.getUserMedia(constraints)
-    .then((stream) => {
-        // Attach the video stream to the video element and autoplay.
-        player.srcObject = stream;
-    });
-
+    if (firstvisit) {
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then((stream) => {
+                // Attach the video stream to the video element and autoplay.
+                player.srcObject = stream;
+        });
+        // adjust first visit var
+        firstvisit = false;
+    }
     
 });

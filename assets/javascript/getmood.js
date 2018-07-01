@@ -1,3 +1,5 @@
+    
+    // function that calls to the face detection api and matches mood with a spotify
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
         // var subscriptionKey = "";
@@ -33,42 +35,44 @@
 
         .done(function(data) {
             console.log(data);
+            // save pertinent data as a variable
             var result = data[0].faceAttributes.emotion;
 
+            // conditional that determines, matches the playlist and changes css
             if (Math.round(result.neutral) === 1) {
                 mood = 'chill';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
-                playlistMatch(mood);
+                playlistMatch();
                 $('#info').css('background-color', 'palegreen').css('color', 'white');
             } else if (Math.round(result.anger) === 1) {
                 mood = 'rage';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
-                playlistMatch(mood);
+                playlistMatch();
                 $('#info').css('background-color', 'darkred').css('color', 'white');
             } else if (Math.round(result.contempt) === 1) {
                 mood = 'revenge';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
-                playlistMatch(mood);
+                playlistMatch();
                 $('#info').css('background-color', 'peachpuff').css('color', 'white');
             } else if (Math.round(result.disgust) === 1) {
                 mood = 'bored';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
-                playlistMatch(mood);
+                playlistMatch();
                 $('#info').css('background-color', 'plum').css('color', 'white');
             } else if (Math.round(result.happiness) === 1) {
                 mood = 'happy';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
-                playlistMatch(mood);
+                playlistMatch();
                 $('#info').css('background-color', 'lightgoldenrodyellow').css('color', 'white');
             } else if (Math.round(result.sadness) === 1) {
                 mood = 'sad';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
-                playlistMatch(mood);
+                playlistMatch();
                 $('#info').css('background-color', 'darkslateblue').css('color', 'white');
             } else if (Math.round(result.surprise) === 1) {
                 mood = 'shock';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
-                playlistMatch(mood);
+                playlistMatch();
                 $('#info').css('background-color', 'lightskyblue').css('color', 'white');
             }
 
@@ -85,6 +89,7 @@
         });
     };
 
+    // function that converts img data to blob format
     function convertToBlobFormat(dataURL) {
         var BASE64_MARKER = ';base64,';
         if (dataURL.indexOf(BASE64_MARKER) == -1) {
@@ -103,7 +108,6 @@
         for (var i = 0; i < rawLength; ++i) {
             uInt8Array[i] = raw.charCodeAt(i);
         }
-
         return new Blob([uInt8Array], { type: contentType });
     }
 
@@ -113,26 +117,26 @@
     // 
     // 
 
-
-    $(document).on('click', '#capture', function () {        
+    $(document).on('click', '#capture', function () { 
+        // draw canvas from video player and save image data       
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
         imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg'));
         $('#canvas').show();
-
         // Stop all video streams.
         player.srcObject.getVideoTracks().forEach(track => track.stop());
         
         // replace player with canvas image / mood and prompt user to confirm
         if (imageData !== null) {
-        $('#snapshot-wrapper').append($('<h2 id="confirm-label">Is this picture okay?</h2>'),
-                                      $('<button class="confirm btn btn-dark mr-2" id="confirm">confirm</button>'),
-                                      $('<button class="confirm btn btn-dark mx-auto" id="try-again">try again</button>'));
+            $('#snapshot-wrapper').append($('<h2 id="confirm-label">Is this picture okay?</h2>'),
+                $('<button class="confirm btn btn-dark mr-2" id="confirm">confirm</button>'),
+                $('<button class="confirm btn btn-dark mx-auto" id="try-again">try again</button>'));
         }
         $('#upload-wrapper').hide();
         $('#main-wrapper').hide();
     });
 
     $(document).on('click', '#confirm', function() {  
+        // save img data again incase image was uploaded
         imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg')); 
         processImage();
         $('#confirm-label').remove();
@@ -145,19 +149,20 @@
     });
 
     $(document).on('click', '#try-again', function(){
-
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            $('#placeholder').remove();
-            $('#confirm-label').remove();
-            $('#confirm').remove();
-            $('#try-again').remove();
-            $('#main-wrapper').show(); 
-            $('#upload-wrapper').show();              
+        // clear the canvas 
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        $('#placeholder').remove();
+        $('#confirm-label').remove();
+        $('#confirm').remove();
+        $('#try-again').remove();
+        $('#main-wrapper').show(); 
+        $('#upload-wrapper').show();              
         
-            navigator.mediaDevices.getUserMedia(constraints)
+        navigator.mediaDevices.getUserMedia(constraints)
             .then((stream) => {
-            // Attach the video stream to the video element and autoplay.
-            player.srcObject = stream;
+                // Attach the video stream to the video element and autoplay.
+                player.srcObject = stream;
             });
-
     });
+
+    
