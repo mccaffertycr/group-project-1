@@ -1,14 +1,14 @@
-    const player = document.getElementById('player');
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const captureButton = document.getElementById('capture');
+    // const player = document.getElementById('player');
+    // const canvas = document.getElementById('canvas');
+    // const context = canvas.getContext('2d');
+    // const captureButton = document.getElementById('capture');
     
-    const constraints = {
-        video: true,
-    };
+    // const constraints = {
+    //     video: true,
+    // };
 
-    var imageData = null;
-    var mood = '';
+    // var imageData = null;
+    // var mood = '';
 
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
@@ -128,32 +128,32 @@
     // 
     // 
 
-    $('#get-started').on('click', function() {
-        // hide this button
-        $(this).hide();
-        // hide the canvas
-         $('#canvas').hide();
-        // remove current mood 
-        $('#mood-label').remove();
-        // empty any existing playlists
-        $('#playlist-wrapper').empty();
-        // display the main container and main-wrapper 
-        $('#main').show();
-        $('#main-wrapper').show();
-        // adjust text on header button
-        $('#get-started').text('get started'); 
-        // change info color to default
-        $('#info').css('background-color', 'white').css('color', 'black');
+    // $('#get-started').on('click', function() {
+    //     // hide this button
+    //     $(this).hide();
+    //     // hide the canvas
+    //      $('#canvas').hide();
+    //     // remove current mood 
+    //     $('#mood-label').remove();
+    //     // empty any existing playlists
+    //     $('#playlist-wrapper').empty();
+    //     // display the main container and main-wrapper 
+    //     $('#main').show();
+    //     $('#main-wrapper').show();
+    //     // adjust text on header button
+    //     $('#get-started').text('get started'); 
+    //     // change info color to default
+    //     $('#info').css('background-color', 'white').css('color', 'black');
 
-        // start webcam
-        navigator.mediaDevices.getUserMedia(constraints)
-                .then((stream) => {
-                    // Attach the video stream to the video element and autoplay.
-                    player.srcObject = stream;
-                });
-        })
+    //     // start webcam
+    //     navigator.mediaDevices.getUserMedia(constraints)
+    //             .then((stream) => {
+    //                 // Attach the video stream to the video element and autoplay.
+    //                 player.srcObject = stream;
+    //             });
+    //     })
 
-    $(document).on('click', '#capture', () => {
+    $(document).on('click', '#capture', function () {
         $('#canvas').show();
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
 

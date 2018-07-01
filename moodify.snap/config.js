@@ -4,7 +4,7 @@ var secret = '';
 
 // event listener that collects api keys
 
-$('#save-keys').on('click', function() {
+$(document).on('click', '#save-keys', function() {
   subscriptionKey = $('#emotion-api-key-input').val().trim();
   clientId = $('#spotify-id-input').val().trim();
   secret = $('#spotify-secret-input').val().trim();
