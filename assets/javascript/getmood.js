@@ -132,7 +132,8 @@
         $('#main-wrapper').hide();
     });
 
-    $(document).on('click', '#confirm', function() {   
+    $(document).on('click', '#confirm', function() {  
+        imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg')); 
         processImage();
         $('#confirm-label').remove();
         $('#confirm').remove();
