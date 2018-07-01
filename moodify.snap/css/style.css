@@ -10,6 +10,37 @@ body {
 }
 
 #info {
-    background: black;
-    color: white;
+    color: black;
+}   
+
+#main {
+    background: slategrey;
+}
+
+.chill {
+    color: lightgray;
+}
+
+.rage {
+    color: darkred;
+}
+
+.revenge {
+    color: peachpuff;
+}
+
+.disgusted {
+    color: plum;
+}
+
+.happy {
+    color: lightgoldenrodyellow;
+}
+
+.sad {
+    color: darkslateblue;
+}
+
+.shock {
+    color: lightskyblue;
 }

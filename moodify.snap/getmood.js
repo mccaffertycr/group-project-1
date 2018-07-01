@@ -49,32 +49,39 @@
 
             if (Math.round(result.neutral) === 1) {
                 mood = 'chill';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '" id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
+                $('#info').css('background-color', 'lightgray').css('color', 'white');
             } else if (Math.round(result.anger) === 1) {
                 mood = 'rage';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '" id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
+                $('#info').css('background-color', 'darkred').css('color', 'white');
             } else if (Math.round(result.contempt) === 1) {
                 mood = 'revenge';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '" id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
+                $('#info').css('background-color', 'peachpuff').css('color', 'white');
             } else if (Math.round(result.digust) === 1) {
                 mood = 'disgusted';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '" id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
+                $('#info').css('background-color', 'plum').css('color', 'white');
             } else if (Math.round(result.happiness) === 1) {
                 mood = 'happy';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '"  id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
+                $('#info').css('background-color', 'lightgoldenrodyellow').css('color', 'white');
             } else if (Math.round(result.sadness) === 1) {
                 mood = 'sad';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '"  id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
+                $('#info').css('background-color', 'darkslateblue').css('color', 'white');
             } else if (Math.round(result.surprise) === 1) {
                 mood = 'shock';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: ' + mood + '</h2>'));
+                $('#snapshot-wrapper').append($('<h2 class="' + mood +  '"  id="mood-label">Your Mood: ' + mood + '</h2>'));
                 playlistMatch(mood);
+                $('#info').css('background-color', 'lightskyblue').css('color', 'white');
             }
 
         })
@@ -114,7 +121,7 @@
 
     // hide main container when page loads
     $('#main').hide();
-    
+
     // 
     // 
     // event listeners
@@ -122,25 +129,29 @@
     // 
 
     $('#get-started').on('click', function() {
-    // hide the canvas
-    $('#canvas').hide();
-    // remove current mood 
-    $('#mood-label').remove();
-    // empty any existing playlists
-    $('#playlist-wrapper').empty();
-    // display the main container and main-wrapper 
-    $('#main').show();
-    $('#main-wrapper').show();
-    // adjust text on header button
-    $('#get-started').text('get started'); 
+        // hide this button
+        $(this).hide();
+        // hide the canvas
+         $('#canvas').hide();
+        // remove current mood 
+        $('#mood-label').remove();
+        // empty any existing playlists
+        $('#playlist-wrapper').empty();
+        // display the main container and main-wrapper 
+        $('#main').show();
+        $('#main-wrapper').show();
+        // adjust text on header button
+        $('#get-started').text('get started'); 
+        // change info color to default
+        $('#info').css('background-color', 'white').css('color', 'black');
 
-    // start webcam
-    navigator.mediaDevices.getUserMedia(constraints)
-            .then((stream) => {
-                // Attach the video stream to the video element and autoplay.
-                player.srcObject = stream;
-            });
-    })
+        // start webcam
+        navigator.mediaDevices.getUserMedia(constraints)
+                .then((stream) => {
+                    // Attach the video stream to the video element and autoplay.
+                    player.srcObject = stream;
+                });
+        })
 
     $(document).on('click', '#capture', () => {
         $('#canvas').show();
@@ -153,7 +164,7 @@
 
         // replace player with canvas image / mood and prompt user to confirm
         if (imageData !== null) {
-        $('#snapshot-wrapper').append($('<h2 id="confirm-label">Are you happy with your Snapshot?</h2>'),
+        $('#snapshot-wrapper').append($('<h2 id="confirm-label">Is this picture okay?</h2>'),
                                       $('<button class="confirm btn btn-dark mr-2" id="confirm">confirm</button>'),
                                       $('<button class="confirm btn btn-dark mx-auto" id="try-again">try again</button>'));
         }
@@ -167,6 +178,7 @@
         $('#confirm').remove();
         $('#try-again').remove();
         $('#canvas').hide();
+        $('#get-started').show();
         $('#get-started').text('not feeling it?');
     });
 
@@ -185,3 +197,4 @@
             });
 
     });
+
