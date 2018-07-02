@@ -14,6 +14,18 @@
     var firstvisit = true;
     var atoken = ""; 
 
+$(document).ready(function() {
+    var landingpage =  
+    $('<div id="info" class="container-fluid text-center">' +
+        '<div id="logo" class="container-fluid">' +
+            '<h1>moodify</h1>' +
+            '<button class="confirm btn btn-dark mr-2" id="get-started">get started</button>' +
+        '</div>' + 
+      '</div>');
+      
+    $('body').append(landingpage);
+})
+
 $(document).on('click', '#get-started', function(){
 
     // hide get started button
