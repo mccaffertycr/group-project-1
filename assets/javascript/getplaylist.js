@@ -16,14 +16,14 @@ function startApp() {
     .done(function (response) {
      // get access token
      atoken = response.access_token;
-     // run next playlist search function after token is recieved
-    //  playlistSearch();
+     console.log(atoken);
     })
 
     .fail(function() {
         console.log('something failed'); 
     });
 }
+
 function playlistMatch() {    
     // limit to 1 to speed up as much as possible
     var limit = 1;
