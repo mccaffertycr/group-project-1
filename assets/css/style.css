@@ -1,0 +1,132 @@
+body {
+    background: #4E5F82;
+    height: auto;
+    text-align: center;
+}    
+
+#begin {
+    font-size: 25px;
+    color: white;
+    font-family: 'BenchNine', sans-serif;
+    letter-spacing: 3px;
+}
+
+#start {
+    color: black;
+    font-family: 'BenchNine', sans-serif;
+    letter-spacing: 5px;
+    font-size: 25px;
+}
+
+#how {
+    color: black;
+    font-family: 'BenchNine', sans-serif;
+    letter-spacing: 5px;
+    font-size: 25px;
+}
+
+
+#logo {
+    margin: auto;
+    width: auto;
+}
+
+.top {
+    top: 0;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+#howToUse {
+    margin: auto;
+}
+
+
+/* 
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+} */
+  
+.left {
+    left: 0;
+    background-color: #4E5F82;
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+}
+
+.right {
+    right: 0;
+    background-color: white;
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+}
+
+.centered {
+    margin: 0;
+    padding: 0;
+    margin: auto;
+}
+
+.centered img {
+    max-width: 100%;
+    margin: auto;
+    display: block;
+    object-fit: contain;
+}
+
+iframe {
+    width: 100%;
+}
+
+#api-keys {
+    padding: 20px;
+    margin: auto;
+}
+
+#save-keys {
+    margin: auto;
+    display: block;
+}
+
+#player {
+    margin: 0 auto;
+    padding: 20px;
+    display: block;
+}
+
+video {
+    border-radius: 50%;
+    
+}
+
+.btn {
+    width: 80px;
+    margin: auto;
+}
+
+#snapshot-wrapper {
+    margin: auto;
+}
+
+#confirm-label {
+    margin: auto;
+}
+
+#confirm {
+    margin: auto;
+}
+

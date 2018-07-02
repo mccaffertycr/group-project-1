@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>moodify</title>
+    <link href="https://fonts.googleapis.com/css?family=BenchNine:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" id="header"></div>
+        <div class="row split left">
+            <div class="col centered" id="playDiv">
+                <img src="assets/images/moodify1.svg" id="logo">
+                <a href="landing.html" id="begin">RETURN</a>
+            </div>
+        </div>
+        <div class="row split right">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="row" id="header">
+                            <div class="col-md-3 top">
+                                <a class="nav" href="start.html" id="start">START</a>
+                            </div>
+                            <div class="col-md-3 top">
+                                <a class="nav" href="howToUse.html" id="how">HOW TO USE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <form id="api-keys">
+                        <input type="text" id="emotion-api-key-input" placeholder="Emotion Detection API-KEY">
+
+                        <input type="text" id="spotify-id-input" placeholder="Spotify Id">
+                        
+                        <input type="text" id="spotify-secret-input" placeholder="Spotify Secret">
+                        <br>
+
+                        <input class="capture btn btn-dark mt-3" id="save-keys" type="enter" value="enter">                
+                    </form>
+                </div>
+
+                <div class="row" id="main-wrapper" class="mt-2">
+                    <video id="player" controls autoplay></video>
+                </div>
+
+                <div class="row" id="btn-wrapper">
+                    <input class="capture btn btn-dark mx-auto" value="capture" id="capture">
+                </div>
+
+                <div class="row" id="snapshot-wrapper" class="mt-3">
+                    <canvas id="canvas" width=640 height=480></canvas>
+                </div>
+
+                <div class="row" id="playlist-wrapper"></div>
+
+            </div>
+
+                <!-- <p id="info">
+                    how to use:<br>
+                    pose for the camera to capture your mood or upload a picture of yourself<br>
+                    try be as expressive as possible<br>
+                    when you press the capture button<br>
+                    moodify will determine your mood <br>
+                    if you press confirm moodify will generate a spotify playlist based on your mood<br>
+                    if you aren't really feeling like the mood chosen fits just press try again                
+                </p> -->
+        
+            <!-- display for the video capture / captured image / chosen mood / playlist -->
+            <!-- <div id="main-wrapper" class="mt-2">
+                <video id="player" controls autoplay></video>
+            </div> -->
+
+            <!-- display for button controls -->
+            <!-- <div id="btn-wrapper">
+                <input class="capture btn btn-dark mx-auto" value="capture" id="capture">
+            </div> -->
+
+            <!-- alternate option to upload an image of face -->
+
+            <!-- <h1>or</h1>
+            <input class="btn btn-dark text-center" type="file" name="pic" accepts="images/*" id="image-input">
+            <input class="upload btn btn-dark text-center" id="upload" value="upload"> -->
+
+            <!-- snapshot displayed here-->
+            <!-- <div id="snapshot-wrapper" class="mt-3">
+                <canvas id="canvas" width=640 height=480></canvas>
+            </div>
+
+
+            <div id="playlist-wrapper">
+
+            </div> -->
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/getmood.js"></script>
+    <script src="assets/js/getplaylist.js"></script>
+    <!-- <script src="assets/js/javascript.js"></script> -->
+
+</body>
+</html>
