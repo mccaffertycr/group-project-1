@@ -1,0 +1,111 @@
+html {
+    height: 100%
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+}
+
+button, #upload-wrapper {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+#info {
+    color: white;
+    background: #4E5F82;
+    width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}   
+
+#main {
+    background: lightgray;
+}
+
+#logo-wrapper {
+    padding-top: 10%;
+}
+
+#logo {
+    width: 500px;
+}
+
+#snapshot-wrapper {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+span {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.chill {
+    color:  #a278ef;
+}
+
+.rage {
+    color: #9b3533;
+}
+
+.revenge {
+    color: #136939;
+}
+
+.bored {
+    color: #9b8c70;
+}
+
+.happy {
+    color: #f2d96a;
+}
+
+.sad {
+    color: #545452;
+}
+
+.shock {
+    color: #f19736;
+}
+
+.modal-body h2 {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+video, canvas {
+    border-radius: 50%;
+}
+
+iframe {
+    margin: 2.5px;
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+    }
+
+    #info {
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }   
+
+    #logo-wrapper {
+        padding-top: 0%;
+    }
+
+    #logo {
+        width: 325px;
+    }
+    
+}
