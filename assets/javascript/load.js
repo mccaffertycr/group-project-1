@@ -17,8 +17,9 @@
 $(document).ready(function() {
     var landingpage =  
     $('<div id="info" class="container-fluid text-center">' +
-        '<div id="logo" class="container-fluid">' +
-            '<h1>moodify</h1>' +
+        '<div id="logo-wrapper" class="container-fluid">' +
+            '<img src="assets/images/default_logo.png" id="logo"class="mx-auto"></img>' +
+            '<br>' +
             '<button class="confirm btn btn-dark mr-2" id="get-started">get started</button>' +
         '</div>' + 
       '</div>');
@@ -43,7 +44,7 @@ $(document).on('click', '#get-started', function(){
       $('<div id="main" class="container-fluid text-center">' +
 
         '<!-- header and api key inputs -->' +
-            '<form class="mt-3" id="api-keys">' +
+            '<form class="mt-3 mb-5" id="api-keys">' +
                 '<input type="text" id="emotion-api-key-input" placeholder="Emotion Detection API-KEY">' +
                 '<input type="text" id="spotify-id-input" placeholder="Spotify Id">' +                
                 '<input type="text" id="spotify-secret-input" placeholder="Spotify Secret">' +
@@ -58,6 +59,7 @@ $(document).on('click', '#get-started', function(){
         '</div>' +
 
         '<div id="upload-wrapper">' +
+            '<button class="capture btn btn-dark mx-auto" id="use-webcam">use webcam</button>' +
             '<h1>or</h1>' +
             '<input class="btn btn-dark text-center" onchange="readURL(this)" type="file" name="pic" accepts="images/*" id="image-input">' +
         '</div>' +
@@ -84,12 +86,13 @@ $(document).on('click', '#get-started', function(){
     $('#playlist-wrapper').empty();
     // display the main container and main-wrapper 
     $('#main').show();
-    $('#main-wrapper').show();
+    $('#main-wrapper').hide();
     $('#upload-wrapper').show();
     // adjust text on header button
     $('#get-started').text('get started'); 
     // change info color to default
-    $('#info').css('background-color', 'white').css('background', '#4E5F82');
+    $('#info').css('background', '#4E5F82');
+    $('#logo').attr('src', 'assets/images/default_logo.png');
     
     // set webcam / canvas variables
     player = document.getElementById('player');
@@ -100,17 +103,7 @@ $(document).on('click', '#get-started', function(){
         video: true,
     };
 
-    // start webcam on first visit 
-    // if (firstvisit) {
-        navigator.mediaDevices.getUserMedia(constraints)
-            .then((stream) => {
-                // Attach the video stream to the video element and autoplay.
-                player.srcObject = stream;
-        });
-        // adjust first visit var
-        firstvisit = false;
-    // } else {
-        // player.srcObject.getVideoTracks().forEach(track => track.play());
-    // }
-    
+    // adjust first visit var
+    firstvisit = false;
+   
 });

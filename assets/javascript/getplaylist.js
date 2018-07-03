@@ -43,7 +43,7 @@ function playlistMatch() {
         for (var i = 0; i < response.playlists.items.length; i++) {
         $("#playlist-wrapper").append("<iframe src='https://open.spotify.com/embed?uri=" 
                                         + response.playlists.items[i].uri 
-                                        + "'width='300' height='320' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>");
+                                        + "' width='300' height='320' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>");
         }
     })
      

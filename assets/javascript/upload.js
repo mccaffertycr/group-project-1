@@ -7,10 +7,10 @@ function readURL(input) {
     // if a file was uploaded create an img element than use that to draw the canvas
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-        var img = new Image(640, 480);
         console.log(input.files);
         
         reader.onload = function (e) {
+            var img = new Image(640, 480);
             img.src =  e.target.result;
             img.id = 'placeholder';
             img.alt = input.files[0].name;

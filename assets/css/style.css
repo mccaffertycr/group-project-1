@@ -9,6 +9,12 @@ body {
     grid-template-rows: 100%;
 }
 
+button, #upload-wrapper {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
 #info {
     color: white;
     background: #4E5F82;
@@ -21,8 +27,23 @@ body {
     background: lightgray;
 }
 
+#logo-wrapper {
+    padding-top: 10%;
+}
+
 #logo {
-    padding-top: 22%;
+    width: 500px;
+}
+
+#snapshot-wrapper {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+span {
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .chill {
@@ -30,11 +51,11 @@ body {
 }
 
 .rage {
-    color: #df4c3b;
+    color: #9b3533;
 }
 
 .revenge {
-    color: #32783b;
+    color: #136939;
 }
 
 .bored {
@@ -42,7 +63,7 @@ body {
 }
 
 .happy {
-    color: #f2e16a;
+    color: #f2d96a;
 }
 
 .sad {
@@ -50,7 +71,11 @@ body {
 }
 
 .shock {
-    color: #eb9144;
+    color: #f19736;
+}
+
+video, canvas {
+    border-radius: 50%;
 }
 
 iframe {
@@ -67,4 +92,13 @@ iframe {
         grid-row-start: 1;
         grid-row-end: 3;
     }   
+
+    #logo-wrapper {
+        padding-top: 0%;
+    }
+
+    #logo {
+        width: 325px;
+    }
+    
 }

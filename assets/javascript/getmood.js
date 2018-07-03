@@ -40,39 +40,46 @@
             // conditional that determines, matches the playlist and changes css
             if (Math.round(result.neutral) === 1) {
                 mood = 'chill';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', 'palegreen').css('color', 'white');
+                $('#info').css('background-color', '#a278ef');
+                $('#logo').attr('src', 'assets/images/chill_logo.png');
             } else if (Math.round(result.anger) === 1) {
                 mood = 'rage';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', 'darkred').css('color', 'white');
+                $('#info').css('background-color', '#9b3533');
+                $('#logo').attr('src', 'assets/images/rage_logo.png');
             } else if (Math.round(result.contempt) === 1) {
                 mood = 'revenge';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', 'peachpuff').css('color', 'white');
+                $('#info').css('background-color', '#136939');
+                $('#logo').attr('src', 'assets/images/revenge_logo.png');
             } else if (Math.round(result.disgust) === 1) {
                 mood = 'bored';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', 'plum').css('color', 'white');
+                $('#info').css('background-color', '#9b8c70');
+                $('#logo').attr('src', 'assets/images/bored_logo.png');
             } else if (Math.round(result.happiness) === 1) {
                 mood = 'happy';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', 'lightgoldenrodyellow').css('color', 'white');
+                $('#info').css('background-color', '#f2d96a');
+                $('#logo').attr('src', 'assets/images/happy_logo.png');
             } else if (Math.round(result.sadness) === 1) {
                 mood = 'sad';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', 'darkslateblue').css('color', 'white');
+                $('#info').css('background-color', '#545452');
+                $('#logo').attr('src', 'assets/images/sad_logo.png');
             } else if (Math.round(result.surprise) === 1) {
                 mood = 'shock';
-                $('#snapshot-wrapper').append($('<h2 id="mood-label">Your Mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
+                $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', 'lightskyblue').css('color', 'white');
+                $('#info').css('background-color', '#f19736');
+                $('#logo').attr('src', 'assets/images/shock_logo.png');
             }
 
         })
@@ -109,6 +116,7 @@
         }
         return new Blob([uInt8Array], { type: contentType });
     }
+
 
     // 
     // 
@@ -150,11 +158,12 @@
     $(document).on('click', '#try-again', function(){
         // clear the canvas 
         context.clearRect(0, 0, canvas.width, canvas.height);
+        $('#canvas').hide();
         $('#placeholder').remove();
         $('#confirm-label').remove();
         $('#confirm').remove();
         $('#try-again').remove();
-        $('#main-wrapper').show(); 
+        $('#main-wrapper').hide(); 
         $('#upload-wrapper').show();              
         
         navigator.mediaDevices.getUserMedia(constraints)
@@ -162,6 +171,17 @@
                 // Attach the video stream to the video element and autoplay.
                 player.srcObject = stream;
             });
+    });
+
+    $(document).on('click', '#use-webcam', function() {
+        $('#upload-wrapper').hide();
+        $('#main-wrapper').show();
+        // start webcam 
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then((stream) => {
+                // Attach the video stream to the video element and autoplay.
+                player.srcObject = stream;
+        });
     });
 
     
