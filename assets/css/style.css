@@ -74,6 +74,13 @@ span {
     color: #f19736;
 }
 
+.modal-body h2 {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
 video, canvas {
     border-radius: 50%;
 }

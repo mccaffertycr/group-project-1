@@ -2,7 +2,7 @@
 
 function readURL(input) {
     // Stop all video streams.
-    player.srcObject.getVideoTracks().forEach(track => track.stop());
+    // player.srcObject.getVideoTracks().forEach(track => track.stop());
 
     // if a file was uploaded create an img element than use that to draw the canvas
     if (input.files && input.files[0]) {

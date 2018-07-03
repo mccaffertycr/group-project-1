@@ -16,11 +16,14 @@ function startApp() {
     .done(function (response) {
      // get access token
      atoken = response.access_token;
-     console.log(atoken);
+     // log if token exists
+     if (atoken !== '') {
+        console.log('Token Granted!');
+     }
     })
 
     .fail(function() {
-        console.log('something failed'); 
+        console.log('token request failed'); 
     });
 }
 
@@ -39,7 +42,6 @@ function playlistMatch() {
     })
     
     .done(function(response){
-        console.log(response);
         for (var i = 0; i < response.playlists.items.length; i++) {
         $("#playlist-wrapper").append("<iframe src='https://open.spotify.com/embed?uri=" 
                                         + response.playlists.items[i].uri 
@@ -48,7 +50,7 @@ function playlistMatch() {
     })
      
     .fail(function() {
-        console.log('something failed');
+        console.log('playlistMatch() failed');
     });
 }
 

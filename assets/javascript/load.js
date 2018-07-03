@@ -16,7 +16,7 @@
 
 $(document).ready(function() {
     var landingpage =  
-    $('<div id="info" class="container-fluid text-center">' +
+    $('<div id="info" class="container-fluid text-center mb-3">' +
         '<div id="logo-wrapper" class="container-fluid">' +
             '<img src="assets/images/default_logo.png" id="logo"class="mx-auto"></img>' +
             '<br>' +
@@ -76,6 +76,28 @@ $(document).on('click', '#get-started', function(){
     '</div>');
     
     $('body').append(maindiv);
+    }
+    // create how to modal
+    if (!howTo) {
+    var howTo = 
+    $('<div id="how-to-modal">' +
+        '<button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bd-modal-lg">how to use</button>' +
+
+        '<div class="modal fade bd-modal-lg" tabindex="-1" role="dialog" aria-labelledby="how-to" aria-hidden="true">' +
+            '<div class="modal-dialog modal-lg">' +
+                '<div class="modal-body">' +
+                    '<h2>use your cam to take a picture (or upload one) </h2><br>' +
+                    '<h2>moodify will analyze your facial expression to determine your mood</h2><br>' +  
+                    '<h2>make sure the picture you submit has a face in it or moodify might not work!</h2><br>' +
+                    '<h2>once your mood is determined moodify will give you 4 spotify playlists that match it</h2><br>' +
+                    '<h2>if you get tired of those or start feeling differently just click not feeling it to submit a new picture</h2><br>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '/div')
+    $('#info').append(howTo); 
+    } else {
+    howTo.show();
     }
 
     // hide the canvas

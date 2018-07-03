@@ -33,7 +33,6 @@
         })        
 
         .done(function(data) {
-            console.log(data);
             // save pertinent data as a variable
             var result = data[0].faceAttributes.emotion;
 
@@ -91,7 +90,7 @@
                                     "" : (jQuery.parseJSON(jqXHR.responseText).message) ?
                                                 jQuery.parseJSON(jqXHR.responseText).message :
                                                 jQuery.parseJSON(jqXHR.responseText).error.message;
-            alert(errorString);
+            console.log(errorString);
         });
     };
 
@@ -151,6 +150,7 @@
         // clear the canvas 
         context.clearRect(0, 0, canvas.width, canvas.height);
         $('#canvas').hide();
+        $('#how-to-modal').hide();
         $('#get-started').show();
         $('#get-started').text('not feeling it?');
     });
