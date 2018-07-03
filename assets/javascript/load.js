@@ -78,7 +78,7 @@ $(document).on('click', '#get-started', function(){
     $('body').append(maindiv);
     }
     // create how to modal
-    if (!howTo) {
+    if (firstvisit) {
     var howTo = 
     $('<div id="how-to-modal">' +
         '<button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bd-modal-lg">how to use</button>' +
@@ -97,7 +97,7 @@ $(document).on('click', '#get-started', function(){
     '/div')
     $('#info').append(howTo); 
     } else {
-    howTo.show();
+    $('#how-to-modal').show();
     }
 
     // hide the canvas
