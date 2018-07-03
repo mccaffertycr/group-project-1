@@ -2,7 +2,6 @@
     // function that calls to the face detection api and matches mood with a spotify
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
-        // var subscriptionKey = "";
 
         // NOTE: You must use the same region in your REST call as you used to
         // obtain your subscription keys. For example, if you obtained your
@@ -135,14 +134,14 @@
         $('#main-wrapper').hide();
     });
 
-    $(document).on('click', '#confirm', function() {  
-        // save img data again incase image was uploaded
-        imageData = convertToBlobFormat(canvas.toDataURL('image/jpeg')); 
+    $(document).on('click', '#confirm', function() {          
         processImage();
         $('#confirm-label').remove();
         $('#confirm').remove();
         $('#try-again').remove();
         $('#placeholder').remove();
+        // clear the canvas 
+        context.clearRect(0, 0, canvas.width, canvas.height);
         $('#canvas').hide();
         $('#get-started').show();
         $('#get-started').text('not feeling it?');

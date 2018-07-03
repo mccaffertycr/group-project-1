@@ -22,7 +22,7 @@ $(document).ready(function() {
             '<button class="confirm btn btn-dark mr-2" id="get-started">get started</button>' +
         '</div>' + 
       '</div>');
-      
+
     $('body').append(landingpage);
 })
 
@@ -43,15 +43,11 @@ $(document).on('click', '#get-started', function(){
       $('<div id="main" class="container-fluid text-center">' +
 
         '<!-- header and api key inputs -->' +
-
             '<form class="mt-3" id="api-keys">' +
                 '<input type="text" id="emotion-api-key-input" placeholder="Emotion Detection API-KEY">' +
-
-                '<input type="text" id="spotify-id-input" placeholder="Spotify Id">' +
-                
+                '<input type="text" id="spotify-id-input" placeholder="Spotify Id">' +                
                 '<input type="text" id="spotify-secret-input" placeholder="Spotify Secret">' +
                 '<br>' +
-
                 '<button class="capture btn btn-dark mt-3" id="save-keys" type="enter">enter</button>' +              
             '</form>' +
     
@@ -93,7 +89,7 @@ $(document).on('click', '#get-started', function(){
     // adjust text on header button
     $('#get-started').text('get started'); 
     // change info color to default
-    $('#info').css('background-color', 'white').css('color', 'black');
+    $('#info').css('background-color', 'white').css('background', '#4E5F82');
     
     // set webcam / canvas variables
     player = document.getElementById('player');
@@ -104,8 +100,8 @@ $(document).on('click', '#get-started', function(){
         video: true,
     };
 
-    // start webcam
-    if (firstvisit) {
+    // start webcam on first visit 
+    // if (firstvisit) {
         navigator.mediaDevices.getUserMedia(constraints)
             .then((stream) => {
                 // Attach the video stream to the video element and autoplay.
@@ -113,6 +109,8 @@ $(document).on('click', '#get-started', function(){
         });
         // adjust first visit var
         firstvisit = false;
-    }
+    // } else {
+        // player.srcObject.getVideoTracks().forEach(track => track.play());
+    // }
     
 });

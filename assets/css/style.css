@@ -10,7 +10,8 @@ body {
 }
 
 #info {
-    color: black;
+    color: white;
+    background: #4E5F82;
     width: 100%;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -25,31 +26,35 @@ body {
 }
 
 .chill {
-    color: palegreen;
+    color:  #a278ef;
 }
 
 .rage {
-    color: darkred;
+    color: #df4c3b;
 }
 
 .revenge {
-    color: peachpuff;
+    color: #32783b;
 }
 
 .bored {
-    color: plum;
+    color: #9b8c70;
 }
 
 .happy {
-    color: lightgoldenrodyellow;
+    color: #f2e16a;
 }
 
 .sad {
-    color: darkslateblue;
+    color: #545452;
 }
 
 .shock {
-    color: lightskyblue;
+    color: #eb9144;
+}
+
+iframe {
+    margin: 2.5px;
 }
 
 @media screen and (max-width: 640px) {

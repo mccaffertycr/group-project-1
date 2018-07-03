@@ -24,9 +24,9 @@ function startApp() {
     });
 }
 
-function playlistMatch() {    
+function playlistMatch() {  
     // limit to 1 to speed up as much as possible
-    var limit = 1;
+    var limit = 4;
     var q = mood;
     // offset by 10 to return a random playlist
     var offset = Math.floor(Math.random() * 10);
@@ -40,15 +40,19 @@ function playlistMatch() {
     
     .done(function(response){
         console.log(response);
+        for (var i = 0; i < response.playlists.items.length; i++) {
         $("#playlist-wrapper").append("<iframe src='https://open.spotify.com/embed?uri=" 
-                                        + response.playlists.items[0].uri 
-                                        + "'width='300' height='380' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>");
+                                        + response.playlists.items[i].uri 
+                                        + "'width='300' height='320' frameborder='0' allowtransparency='true' allow='encrypted-media'></iframe>");
+        }
     })
      
     .fail(function() {
         console.log('something failed');
     });
 }
+
+
 
  
  
