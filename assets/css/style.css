@@ -6,9 +6,13 @@ body {
 
 #begin {
     font-size: 25px;
-    color: white;
+    color: #4d4d4d;
     font-family: 'BenchNine', sans-serif;
     letter-spacing: 3px;
+    border-radius: 35%;
+    background-color: white;
+    border: none;
+    padding: 8px;
 }
 
 #start {
@@ -27,7 +31,8 @@ body {
 
 
 #logo {
-    width: 100%;
+    width: 80%;
+    margin: auto;
 }
 
 .top {
