@@ -83,7 +83,7 @@
 
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
-            // Display error message.
+            // display error message.
             var errorString = (errorThrown === "") ?
                 "Error. " : errorThrown + " (" + jqXHR.status + "): ";
                 errorString += (jqXHR.responseText === "") ?

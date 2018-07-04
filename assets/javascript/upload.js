@@ -1,13 +1,10 @@
 // listen for uploads
 
 function readURL(input) {
-    // Stop all video streams.
-    // player.srcObject.getVideoTracks().forEach(track => track.stop());
 
     // if a file was uploaded create an img element than use that to draw the canvas
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-        console.log(input.files);
         
         reader.onload = function (e) {
             var img = new Image(640, 480);
