@@ -35,6 +35,14 @@ button, #upload-wrapper {
     width: 500px;
 }
 
+#main-wrapper {
+    padding-top: 5%;
+}
+
+#upload-wrapper {
+    padding-top: 18%;
+}
+
 #snapshot-wrapper {
     font-family: 'BenchNine', sans-serif;
     font-size: 24px;
@@ -95,6 +103,10 @@ iframe {
         grid-template-rows: 50% 50%;
     }
 
+    iframe {
+        width: 250px;
+    }
+
     #info {
         grid-row-start: 1;
         grid-row-end: 3;
@@ -106,6 +118,10 @@ iframe {
 
     #logo {
         width: 325px;
+    }
+
+    #upload-wrapper {
+        padding-top: 5%;
     }
     
 }
