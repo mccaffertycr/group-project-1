@@ -1,0 +1,208 @@
+body {
+    background: #4E5F82;
+    height: auto;
+    position: relative;
+}
+
+#rightMain {
+    background-color: #f4f3f1;
+    top: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-fill-mode: forwards;
+}
+
+#logo {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    animation-duration: 3s;
+    animation-name: slide;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 100%;
+        height: 100%;
+    }
+
+    to {
+        margin-left: 50%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes slide {
+    from {
+        margin-left: 0%;
+        width:100%;
+        height: auto;
+    }
+    
+    to {
+        margin-left: 0%;
+        margin-top: 10%;
+        width: 50%;
+        height: auto;
+    }
+}
+
+#api-keys {
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+#main-wrapper {
+    padding: 20px;
+    margin: auto;
+}
+
+video {
+    margin: auto;
+}
+
+#upload-wrapper {
+    padding: 20px;
+    margin: auto;
+}
+
+#snapshot-wrapper {
+    padding: 20px;
+    margin: auto;
+}
+
+#playlist-wrapper {
+    padding: 20px;
+    margin: auto;
+}
+
+#image-input, #capture, #use-webcam {
+    margin: auto;
+    display: inline-block;
+    
+}
+
+button, #upload-wrapper {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    padding: 10px;
+}
+#get-started {
+    font-family: 'BenchNine', sans-serif;
+    letter-spacing: 3px;
+}
+.chill {
+    color:  #a260ee;
+}
+
+.rage {
+    color: #972d2d;
+}
+
+.revenge {
+    color: #0f4e33;
+}
+
+.bored {
+    color: #725d40;
+}
+
+.happy {
+    color: #e5d53c;
+}
+
+.sad {
+    color: #333333;
+}
+
+.shock {
+    color: #e17b2d;
+}
+
+.modal-body h2 {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+video, canvas {
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+    }
+
+    iframe {
+        width: 250px;
+    }
+
+    #info {
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }   
+
+    #logo-wrapper {
+        padding-top: 0%;
+    }
+
+    #logo {
+        width: 325px;
+    }
+
+    #upload-wrapper {
+        padding-top: 5%;
+    }
+    
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: white; 
+    background-color: transparent;
+    
+}
+
+.modal-content {
+    background-color:white;
+    opacity: .9;
+    font-family: 'BenchNine', sans-serif;
+    margin: 15% auto; 
+    padding: 20px;
+    border: none;;
+    width: 60%; 
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

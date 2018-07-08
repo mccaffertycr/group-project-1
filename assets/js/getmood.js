@@ -41,44 +41,44 @@
                 mood = 'chill';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', '#a278ef');
-                $('#logo').attr('src', 'assets/images/chill_logo.png');
+                $('body').css('background-color', '#a260ee');
+                $('#logo').attr('src', 'assets/images/chillLogo.png');
             } else if (Math.round(result.anger) === 1) {
                 mood = 'rage';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', '#9b3533');
-                $('#logo').attr('src', 'assets/images/rage_logo.png');
+                $('body').css('background-color', '#972d2d');
+                $('#logo').attr('src', 'assets/images/rageLogo.png');
             } else if (Math.round(result.contempt) === 1) {
                 mood = 'revenge';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', '#136939');
-                $('#logo').attr('src', 'assets/images/revenge_logo.png');
+                $('body').css('background-color', '#0f4e33');
+                $('#logo').attr('src', 'assets/images/revengeLogo.png');
             } else if (Math.round(result.disgust) === 1) {
                 mood = 'bored';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', '#9b8c70');
-                $('#logo').attr('src', 'assets/images/bored_logo.png');
+                $('body').css('background-color', '#725d40');
+                $('#logo').attr('src', 'assets/images/boredLogo.png');
             } else if (Math.round(result.happiness) === 1) {
                 mood = 'happy';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', '#f2d96a');
-                $('#logo').attr('src', 'assets/images/happy_logo.png');
+                $('body').css('background-color', '#e5d53c');
+                $('#logo').attr('src', 'assets/images/happyLogo.png');
             } else if (Math.round(result.sadness) === 1) {
                 mood = 'sad';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', '#545452');
-                $('#logo').attr('src', 'assets/images/sad_logo.png');
+                $('body').css('background-color', '#333333');
+                $('#logo').attr('src', 'assets/images/sadLogo.png');
             } else if (Math.round(result.surprise) === 1) {
                 mood = 'shock';
                 $('#snapshot-wrapper').append($('<h2 id="mood-label">current mood: <span class="' + mood +  '">' + mood + '</span></h2>'));
                 playlistMatch();
-                $('#info').css('background-color', '#f19736');
-                $('#logo').attr('src', 'assets/images/shock_logo.png');
+                $('body').css('background-color', '#e17b2d');
+                $('#logo').attr('src', 'assets/images/shockedLogo.png');
             }
 
         })
@@ -116,7 +116,6 @@
         return new Blob([uInt8Array], { type: contentType });
     }
 
-
     // 
     // 
     // event listeners
@@ -153,6 +152,7 @@
         $('#how-to-modal').hide();
         $('#get-started').show();
         $('#get-started').text('not feeling it?');
+        $("#get-started").href("page2.html");
     });
 
     $(document).on('click', '#try-again', function(){

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=BenchNine:300" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Page 2</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <img src="assets/images/logodesignlandingblank.png" id="logo">
+        <a class="confirm btn btn-dark mr-2" href="page2.html" id="get-started"></a>
+    
+        <div id="how-to-modal">
+                <button type="button" class="btn btn-dark" id="modalButton">how to use</button>
+            
+                <div class="modal" id="myModal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <br>
+                        <h2>Directions:</h2>
+                        <p>1. use your cam to take a picture (or upload one) </p>
+                        <p>2. moodify will analyze your facial expression to determine your mood</p>  
+                        <p>3. make sure the picture you submit has a face in it or moodify might not work</p>
+                        <p>4. once your mood is determined moodify will give you 4 spotify playlists that match it</p>
+                        <p>5. if you get tired of those or start feeling differently just click not feeling it to submit a new picture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6" id="leftMain"></div>
+            <div class="col-md-6" id="rightMain">
+                <div class="row">
+                        <form id="api-keys">
+                            <input type="text" id="emotion-api-key-input" placeholder="Emotion Detection API-KEY">
+    
+                            <input type="text" id="spotify-id-input" placeholder="Spotify Id">
+                            
+                            <input type="text" id="spotify-secret-input" placeholder="Spotify Secret">
+                            <br>
+    
+                            <button class="capture btn btn-dark mt-3" id="save-keys" type="enter">enter</button>
+                                           
+                        </form>
+                    </div>
+    
+                    <div class="row" id="main-wrapper" class="mt-2">
+                        <video id="player" controls autoplay></video>
+                        <button class="capture btn btn-dark mx-auto" value="capture" id="capture">capture</button>
+                    </div>
+    
+                    <div class="row" id="upload-wrapper">
+                        <button class="capture btn btn-dark" value="capture" id="use-webcam">use webcam</button>
+                        <br>
+                        <h2>or</h2>
+                        <br>
+                        <input class="btn btn-dark text-center" onchange="readURL(this)" type="file" name="pic" accepts="images/*" id="image-input">
+                    </div>
+    
+                    <div class="row" id="snapshot-wrapper" class="mt-3">
+                        <canvas id="canvas" width=640 height=480></canvas>
+                    </div>
+    
+                    <div class="row" id="playlist-wrapper"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById("modalButton");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/getmood.js"></script>
+    <script src="assets/js/getplaylist.js"></script>
+    <script src="assets/js/upload.js"></script>
+    <script src="assets/js/load.js"></script>
+    
+</body>
+</html>
